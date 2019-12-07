@@ -1,0 +1,22 @@
+{
+  "name": "vacasa",
+  "version": "1.0.0",
+  "description": "Simple web service that can respond to a series of plain-text GET requests",
+  "author": "Blake Kelley <blake.t.kelley@gmail.com> (https://bkelley.dev)",
+  "main": "index.js",
+  "scripts": {
+    "start": "node src/index.js",
+    "dev": "nodemon src/index.js",
+    "test": "jest --watch --runInBand"
+  },
+  "keywords": [],
+  "license": "MIT",
+  "dependencies": {
+    "express": "^4.17.1"
+  },
+  "devDependencies": {
+    "jest": "^24.9.0",
+    "nodemon": "^2.0.1",
+    "supertest": "^4.0.2"
+  }
+}
