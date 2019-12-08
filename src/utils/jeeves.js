@@ -59,6 +59,67 @@ class Jeeves {
         
         return odd.concat(even).join(" ");
     }
+
+    listSorting(question) {
+        const matrix = question.split('\n');
+        const columns = matrix.shift().trim().split('');
+
+        return this.matrixSort(matrix, columns, []).join("");
+    }
+
+    matrixSort(matrix, columns, result) {
+        for (let i=0; i<matrix.length; i++) {
+            let row = matrix[i].split('');
+            let letter = row.shift();
+            
+            for (let col=0; col<row.length; col++) {
+                if (row[col] === '=') {
+                    if (!result.includes(letter))
+                        result.push(letter);
+                    break;
+                } else if (row[col] === '<') {
+                    if (result.includes(letter)) {
+                        if (result.includes(columns[col])){
+                            if(result.indexOf(letter) > result.indexOf(columns[col])) {
+                                result.splice(result.indexOf(columns[col]),1);
+                                result.splice(result.indexOf(letter)+1, 0, columns[col]);
+                                return this.matrixSort(matrix, columns, result);
+                            }
+                        } else {
+                            result.splice(result.indexOf(letter), 0, columns[col]);
+                        }
+                    } else {
+                        if (result.includes(columns[col])) {
+                            result.splice(result.indexOf(columns[col]), 0, letter);
+                        } else {
+                            result.push(letter);
+                            result.push(columns[col]);
+                        }
+                    }
+                } else if (row[col] === '>') {
+                    if (result.includes(letter)) {
+                        if (result.includes(columns[col])){
+                            if(result.indexOf(letter) < result.indexOf(columns[col])) {
+                                result.splice(result.indexOf(letter),1);
+                                result.splice(result.indexOf(columns[col])+1, 0, letter);
+                                return this.matrixSort(matrix, columns, result);
+                            }
+                        } else {
+                            result.splice(result.indexOf(letter), 0, columns[col]);
+                        }
+                    } else {
+                        if (result.includes(columns[col])) {
+                            result.splice(result.indexOf(columns[col])+1, 0, letter);
+                        } else {
+                            result.push(columns[col]);   
+                            result.push(letter);
+                        }
+                    }
+                }
+            }
+        }
+        return result;
+    }
 }
 
 const jeeves = new Jeeves();
