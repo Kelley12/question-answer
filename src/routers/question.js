@@ -1,5 +1,6 @@
 const express = require('express');
-const router = new express.Router()
+const router = new express.Router();
+const parser = require("../utils/parser");
 
 router.get('/', (req, res) => {
     const header = "<h1>Web Service Usage:</h1>";
@@ -19,7 +20,9 @@ router.get('/question', (req, res) => {
             res.status(400).send("Please provide a question.");
         }
 
-        res.send(`Received your question: ${question}`);
+        response = parser(question);
+
+        res.send(response);
     } catch(e) {
         res.status(500).send("Internal Server Error. Please try again.");
     }
