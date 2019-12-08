@@ -121,7 +121,7 @@ test('Should answer: < 13 8 53 41 18 14 44 9 46 17 >', async () => {
 test('Should answer: ABCDE A-<--> B-=--- C--=-- D-><-- E----=', async () => {
     const response = await request(app)
         .get('/question')
-        .query({ q: `ABCDE\nA-<-->\nB-=---\nC--=--\nD-><--\nE----=` })
+        .query({ q: ` ABCDE\r\nA-<-->\r\nB-=---\r\nC--=--\r\nD-><--\r\nE----=` })
         .send()
         .expect(200);
     expect(response.text).toBe("EABDC");
@@ -130,7 +130,7 @@ test('Should answer: ABCDE A-<--> B-=--- C--=-- D-><-- E----=', async () => {
 test('Should answer: ABCD A=--- B---< C>--- D<---', async () => {
     const response = await request(app)
         .get('/question')
-        .query({ q: `ABCD\nA=---\nB---<\nC>---\nD<---` })
+        .query({ q: ` ABCD\r\nA=---\r\nB---<\r\nC>---\r\nD<---` })
         .send()
         .expect(200);
     expect(response.text).toBe("BDAC");
@@ -139,7 +139,7 @@ test('Should answer: ABCD A=--- B---< C>--- D<---', async () => {
 test('Should answer: ABCD A=--- B<--- C-<-- D--<-', async () => {
     const response = await request(app)
         .get('/question')
-        .query({ q: `ABCD\nA=---\nB<---\nC-<--\nD--<-` })
+        .query({ q: ` ABCD\r\nA=---\r\nB<---\r\nC-<--\r\nD--<-` })
         .send()
         .expect(200);
     expect(response.text).toBe("DCBA");
