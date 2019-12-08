@@ -10,6 +10,9 @@ const parser = (question) => {
     if (question.match(standardQuestion)) {
         return jeeves.standardQuestion(question);
     } else if (question.match(randomWords)) {
+        if (question.split(' ').length === 1 && jeeves.dict[question])
+            return jeeves.dict[question];
+        return jeeves.randomWords(question);
     } else if (question.match(mathEquation)) {
         return jeeves.mathEquation(question);
     } else if (question.match(numericSet)) {
