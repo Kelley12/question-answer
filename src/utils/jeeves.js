@@ -17,6 +17,13 @@ class Jeeves {
         return "https://github.com/Kelley12/question-answer";
     }
 
+
+    mathEquation(question) {
+        const regex = /[ ]*[+][ ]*/g
+        const numbers = question.substring(0,question.indexOf('=')-1).split(regex);
+        return numbers.reduce((a, v) => parseInt(a) + parseInt(v), 0).toString();
+    }
+
 }
 
 const jeeves = new Jeeves();

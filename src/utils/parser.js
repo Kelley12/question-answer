@@ -11,6 +11,7 @@ const parser = (question) => {
         return jeeves.standardQuestion(question);
     } else if (question.match(randomWords)) {
     } else if (question.match(mathEquation)) {
+        return jeeves.mathEquation(question);
     } else if (question.match(numericSet)) {
     } else if (question.match(listSort)) {
     } else {
