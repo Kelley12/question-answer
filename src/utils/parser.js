@@ -1,3 +1,5 @@
+const jeeves = require("./jeeves");
+
 const standardQuestion = /([a-zA-Z]+[ ]*)+[?]$/g;
 const randomWords = /([a-zA-Z]+[ ]*)+$/g;
 const mathEquation = /([0-9]+\s[+|=]\s)+[?]/g;
@@ -6,6 +8,7 @@ const listSort = /^[A-E]+\s(([A-E][-<>=]+)\s)+/gm
 
 const parser = (question) => {
     if (question.match(standardQuestion)) {
+        return jeeves.standardQuestion(question);
     } else if (question.match(randomWords)) {
     } else if (question.match(mathEquation)) {
     } else if (question.match(numericSet)) {
