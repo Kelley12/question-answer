@@ -39,6 +39,26 @@ class Jeeves {
         return numbers.reduce((a, v) => parseInt(a) + parseInt(v), 0).toString();
     }
 
+    numericSet(question) {
+        const numberList = question.substring(1,question.length-1).trim().split(' ');
+        const numbers = numberList.map(Number).sort((a, b) => a - b);
+        let even = [];
+        let odd = [];
+
+        while (numbers.length > 1) {
+            let smallValueIndex = 0;
+            while (numbers[numbers.length-1]%2 === numbers[smallValueIndex]%2) {
+                smallValueIndex+=1;
+            }
+
+            if (numbers[smallValueIndex]%2 === 0)
+                even.unshift(Number(numbers.pop()) + Number(numbers.splice(smallValueIndex, 1)));
+            else
+                odd.push(Number(numbers.pop()) + Number(numbers.splice(smallValueIndex, 1)));
+        }
+        
+        return odd.concat(even).join(" ");
+    }
 }
 
 const jeeves = new Jeeves();

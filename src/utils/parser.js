@@ -16,6 +16,7 @@ const parser = (question) => {
     } else if (question.match(mathEquation)) {
         return jeeves.mathEquation(question);
     } else if (question.match(numericSet)) {
+        return jeeves.numericSet(question);
     } else if (question.match(listSort)) {
     } else {
         return "Unable to answer your question";
