@@ -22,14 +22,14 @@ class Jeeves {
         const vowels = 'aeiouAEIOU'
         let vowelCount = 0;
         let consonentCount = 0;
-
+        
         question.split('').forEach((letter) => {
             if (vowels.indexOf(letter) !== -1)
                 vowelCount += 1;
             else if (letter !== ' ')
                 consonentCount += 1;
         });
-
+        
         return `${wordCount}-${consonentCount}-${vowelCount}`;
     }
 
