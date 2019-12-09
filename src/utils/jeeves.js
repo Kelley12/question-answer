@@ -86,7 +86,7 @@ class Jeeves {
                                 return this.matrixSort(matrix, columns, result);
                             }
                         } else {
-                            result.splice(result.indexOf(letter), 0, columns[col]);
+                            result.splice(result.indexOf(letter)+1, 0, columns[col]);
                         }
                     } else {
                         if (result.includes(columns[col])) {
