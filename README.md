@@ -24,6 +24,7 @@
 * [Jest](https://jestjs.io/)
 * [Supertest](https://github.com/visionmedia/supertest)
 
-### Hosting
+### CI/CD & Hosting
 
+* [Travis](https://travis-ci.com/)
 * [Heroku](https://www.heroku.com/)
