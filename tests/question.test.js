@@ -145,6 +145,15 @@ test('Should answer: ABCD A=--- B<--- C-<-- D--<-', async () => {
     expect(response.text).toBe("DCBA");
 });
 
+test('Should answer: ABCDE A-->-< B-=--- C--=-- D->--- E-<---', async () => {
+    const response = await request(app)
+        .get('/question')
+        .query({ q: ` ABCDE\r\nA-->-<\r\nB-=---\r\nC--=--\r\nD->---\r\nE-<---` })
+        .send()
+        .expect(200);
+    expect(response.text).toBe("CAEBD");
+});
+
 test('Should answer: Source code for this exercise?', async () => {
     const response = await request(app)
         .get('/question')
