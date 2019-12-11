@@ -73,45 +73,47 @@ class Jeeves {
             let letter = row.shift();
             
             for (let col=0; col<row.length; col++) {
-                if (row[col] === '=') {
+                let column = columns[col];
+                let rowVal = row[col];
+                if (rowVal === '=') {
                     if (!result.includes(letter))
                         result.push(letter);
                     break;
-                } else if (row[col] === '<') {
+                } else if (rowVal === '<') {
                     if (result.includes(letter)) {
-                        if (result.includes(columns[col])){
-                            if(result.indexOf(letter) > result.indexOf(columns[col])) {
-                                result.splice(result.indexOf(columns[col]),1);
-                                result.splice(result.indexOf(letter)+1, 0, columns[col]);
+                        if (result.includes(column)){
+                            if(result.indexOf(letter) > result.indexOf(column)) {
+                                result.splice(result.indexOf(column),1);
+                                result.splice(result.indexOf(letter)+1, 0, column);
                                 return this.matrixSort(matrix, columns, result);
                             }
                         } else {
-                            result.splice(result.indexOf(letter)+1, 0, columns[col]);
+                            result.splice(result.indexOf(letter)+1, 0, column);
                         }
                     } else {
-                        if (result.includes(columns[col])) {
-                            result.splice(result.indexOf(columns[col]), 0, letter);
+                        if (result.includes(column)) {
+                            result.splice(result.indexOf(column), 0, letter);
                         } else {
                             result.push(letter);
-                            result.push(columns[col]);
+                            result.push(column);
                         }
                     }
-                } else if (row[col] === '>') {
+                } else if (rowVal === '>') {
                     if (result.includes(letter)) {
-                        if (result.includes(columns[col])){
-                            if(result.indexOf(letter) < result.indexOf(columns[col])) {
+                        if (result.includes(column)){
+                            if(result.indexOf(letter) < result.indexOf(column)) {
                                 result.splice(result.indexOf(letter),1);
-                                result.splice(result.indexOf(columns[col])+1, 0, letter);
+                                result.splice(result.indexOf(column)+1, 0, letter);
                                 return this.matrixSort(matrix, columns, result);
                             }
                         } else {
-                            result.splice(result.indexOf(letter), 0, columns[col]);
+                            result.splice(result.indexOf(letter), 0, column);
                         }
                     } else {
-                        if (result.includes(columns[col])) {
-                            result.splice(result.indexOf(columns[col])+1, 0, letter);
+                        if (result.includes(column)) {
+                            result.splice(result.indexOf(column)+1, 0, letter);
                         } else {
-                            result.push(columns[col]);   
+                            result.push(column);   
                             result.push(letter);
                         }
                     }
